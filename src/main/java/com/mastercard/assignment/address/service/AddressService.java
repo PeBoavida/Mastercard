@@ -1,10 +1,12 @@
 package com.mastercard.assignment.address.service;
 
-import com.mastercard.assignment.address.dto.CreateAddressDTO;
 import com.mastercard.assignment.address.dto.AddressDTO;
+import com.mastercard.assignment.address.dto.CreateAddressDTO;
+
+import java.util.List;
 
 public interface AddressService {
-    Long createAddress(CreateAddressDTO createAddressDTO);
+    Long createAddress(Long customerId, CreateAddressDTO createAddressDTO);
 
-    AddressDTO getAddress(Long addressId);
+    List<AddressDTO> getAddressByCustomerId(Long addressId);
 }

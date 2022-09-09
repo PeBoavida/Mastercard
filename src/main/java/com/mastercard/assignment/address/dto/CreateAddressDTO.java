@@ -2,29 +2,40 @@ package com.mastercard.assignment.address.dto;
 
 import com.mastercard.assignment.address.enums.AddressTypeEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-@Schema(name = "CreateAddressDTO")
 @Getter
-@Setter
+@Builder
+@Schema(name = "CreateAddressDTO")
 public class CreateAddressDTO {
 
-    @Schema(description = "Type of the address (Enum). It can either be Billing or Shipping.", example = "BILLING", required = true)
+    @NotNull
+    @Schema(
+            description = "Type of the address (Enum). It can either be BILLING or SHIPPING.",
+            example = "BILLING",
+            required = true)
     private AddressTypeEnum addressType;
 
-    @Schema(description = "Customer id returned in the create customer endpoint.", example = "1", required = true)
-    private Long customerId;
-
+    @NotNull
+    @NotBlank
     @Schema(description = "Full location address.", example = "1426 Webster Street", required = true)
     private String streetAddress;
 
+    @NotNull
+    @NotBlank
     @Schema(description = "City of this address.", example = "Woodbridge", required = true)
     private String city;
 
+    @NotNull
+    @NotBlank
     @Schema(description = "State of this address.", example = "New Jersey", required = true)
     private String state;
 
+    @NotNull
+    @NotBlank
     @Schema(description = "Zip code of this address.", example = "07095", required = true)
     private String zipCode;
 }

@@ -1,24 +1,26 @@
 package com.mastercard.assignment.address.model;
 
-import com.mastercard.assignment.customer.model.Customer;
 import com.mastercard.assignment.address.enums.AddressTypeEnum;
+import com.mastercard.assignment.customer.model.Customer;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="Address")
+@Table(name = "Address")
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Address {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerId", referencedColumnName="id")
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
     private Customer customer;
 
     private AddressTypeEnum addressType;
